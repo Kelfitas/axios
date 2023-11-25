@@ -43,6 +43,7 @@ jobs:
         id: tag_version
         with:
           tag: "v${{ steps.package-version.outputs.current-version }}"
+          force_push_tag: true
       ############# GITHUB RELEASE ##############
       - name: "Create a GitHub release v${{ steps.package-version.outputs.current-version }}"
         uses: ncipollo/release-action@v1
