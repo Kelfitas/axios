@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://npm.pkg.github.com
       - run: npm ci
       - name: get-npm-version
         id: package-version
@@ -51,8 +51,11 @@ jobs:
           body: |
             ## Release notes:
             ${{ steps.extract-release-notes.outputs.release_notes }}
-      ############# NPM RELEASE ##############
-      - name: Publish the release to NPM
-        run: npm publish --provenance --access public
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # ############# NPM RELEASE ##############
+      # - name: Publish the release to NPM
+      #   run: npm publish --provenance --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.npm_token}}
