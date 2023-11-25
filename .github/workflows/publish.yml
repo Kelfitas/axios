@@ -50,6 +50,7 @@ jobs:
         with:
           tag: "v${{ steps.package-version.outputs.current-version }}"
           name: "Release v${{ steps.package-version.outputs.current-version }}"
+          allowUpdates: true
           body: |
             ## Release notes:
             ${{ steps.extract-release-notes.outputs.release_notes }}
