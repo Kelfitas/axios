@@ -54,7 +54,7 @@ jobs:
           body: |
             ## Release notes:
             ${{ steps.extract-release-notes.outputs.release_notes }}
-      - run: npm publish
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # ############# NPM RELEASE ##############
